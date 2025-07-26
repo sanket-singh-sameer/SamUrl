@@ -8,7 +8,9 @@ import urlSchema from "./src/models/shorturl.model.js";
 import shortUrlRoute from "./src/routes/shorturl.route.js";
 import { AppError, ExpressError } from "./src/utils/errorHandeler.js";
 import { redirectShortUrl } from "./src/controllers/shorturl.controller.js";
+import cors from "cors"
 
+app.use(cors())
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
