@@ -15,6 +15,7 @@ const UrlForm = () => {
     e.preventDefault();
     setLoading(true);
     setShortUrl("");
+    setCopy("Copy!"); // Reset copy button state on new shorten
     try {
       const data = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}api/create`,
@@ -24,7 +25,6 @@ const UrlForm = () => {
     } catch (error) {
       console.log(error);
     }
-
     setLoading(false);
   };
   return (
@@ -58,7 +58,11 @@ const UrlForm = () => {
             &nbsp; &nbsp;
             <button
               onClick={copyLink}
-              className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-1 rounded w-20"
+              className={`font-semibold py-1 rounded w-20 transition-colors
+                ${copy === "Copied!" 
+                  ? "bg-green-600 text-white" 
+                  : "bg-blue-600 hover:bg-pink-700 text-white"
+                }`}
             >
               {copy}
             </button>
