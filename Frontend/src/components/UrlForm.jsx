@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { createShortUrl } from "../apis/shortUrl.api";
 
 const UrlForm = () => {
   const [url, setUrl] = useState("");
@@ -17,11 +18,8 @@ const UrlForm = () => {
     setShortUrl("");
     setCopy("Copy!"); // Reset copy button state on new shorten
     try {
-      const data = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}api/create`,
-        { url }
-      );
-      setShortUrl(data.data);
+      const data = await createShortUrl(url)
+      setShortUrl(data);
     } catch (error) {
       console.log(error);
     }
