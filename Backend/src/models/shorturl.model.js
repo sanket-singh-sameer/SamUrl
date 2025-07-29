@@ -15,7 +15,7 @@ const urlSchema = new mongoose.Schema({
     unique: true,
     index: true,
   },
-  User: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },

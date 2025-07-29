@@ -3,28 +3,21 @@ import mongoose from "mongoose";
 const modelName = "User";
 
 const userSchema = new mongoose.Schema({
-  fullUrl: {
+  username: {
     type: String,
     required: true,
   },
-  shortUrl: {
+  email: {
     type: String,
     required: true,
-    unique: true,
-    index: true,
   },
-  User: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-  views: {
-    type: Number,
+  password: {
+    type: String,
     required: true,
-    default: 0,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
+  avatar: {
+    type: String,
+    default: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
   },
 });
 
