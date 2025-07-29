@@ -2,9 +2,8 @@ import User from "../models/user.model.js";
 import { ExpressError, wrapAsync } from "../utils/errorHandeler.js";
 import { verifyToken } from "../utils/helper.js";
 
-export const protect = wrapAsync(async (req, res, next) => {
+export const authMiddleware = wrapAsync(async (req, res, next) => {
   const accessToken = req.cookies.accessToken;
-  console.log("Token:", accessToken);
   if(!accessToken){
     throw new ExpressError(401, "You are not logged in");
   }

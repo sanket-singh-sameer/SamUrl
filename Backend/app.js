@@ -13,7 +13,10 @@ import { attachUser } from "./src/utils/attachUser.js";
 import cookieParser from "cookie-parser";
 import { redirectShortUrl } from "./src/controllers/shorturl.controller.js";
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  credentials: true
+}));
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());

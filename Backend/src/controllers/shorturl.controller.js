@@ -10,9 +10,6 @@ const createShortUrl = wrapAsync(async (req, res) => {
   console.log(req.currUser);
   if (req.currUser) {
     const { url, slug } = req.body;
-    if (!slug || slug.length < 3) {
-      throw new ExpressError(400, "Slug must be at least 3 characters long");
-    }
     const finalShortUrl = await createShortUrlServiceWithUser(
       url,
       slug,
@@ -41,4 +38,6 @@ const redirectShortUrl = wrapAsync(async (req, res) => {
     return;
   }
 });
+
+
 export { createShortUrl, redirectShortUrl };
